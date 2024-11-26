@@ -1,8 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { STLLoader } from "three/examples/jsm/loaders/STLLoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import * as shader from "../shaders/shader";
 import { OutlinePass } from "three/examples/jsm/postprocessing/OutlinePass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
@@ -235,7 +233,7 @@ export default class Screen {
     this.setupResize();
 
     this.sphereMeshes = [];
-    this.addRings(this.areas);
+    this.addRings();
   }
 
   toggleEnableSpheres(bool) {
@@ -419,7 +417,7 @@ export default class Screen {
     }
   }
 
-  addRings(data) {
+  addRings() {
     this.sphereMaterial = new THREE.MeshStandardMaterial({
       color: 0xffff00,
       emissive: 0xffff00,

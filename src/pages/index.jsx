@@ -1,21 +1,7 @@
-import Image from "next/image";
-import localFont from "next/font/local";
-import { useEffect } from "react";
 import { useThree } from "../hooks/useThree.js";
 import Screen from "./screen.jsx";
 import { useState } from "react";
 import Setting from "./setting.jsx";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export default function Home() {
   const { canvas, threeInstance } = useThree(Screen);
@@ -95,6 +81,7 @@ export default function Home() {
           {settingNames.map((name, i) => {
             return (
               <Setting
+                key={i}
                 name={name}
                 identifier={settingIdentifiers[i]}
                 settings={settings}
@@ -119,6 +106,7 @@ export default function Home() {
         {meshList.map((mesh) => {
           return (
             <div
+              key={mesh.name}
               className="bg-slate-400 hover:bg-slate-800 cursor-pointer active:bg-slate-600 px-4 py-[2px] hidden group-hover:block w-fit rounded-sm ml-auto mr-0"
               onClick={() => {
                 if (threeInstance.current)
