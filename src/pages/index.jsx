@@ -151,27 +151,29 @@ export default function Home() {
           </video>
         </div>
       )}
-      {sphereSelected && sphereSelected.name.split("_")[0] != "Frame" && (
-        <div className="absolute w-[100vw] h-[100vh] z-50">
-          <div
-            className="w-full h-full bg-slate-400 bg-opacity-50 absolute"
-            onMouseDown={() => {
-              setSphereSelected(false);
-            }}
-          ></div>
-          <div className="relative mx-auto font-extrabold text-3xl text-white bg-indigo-500 rounded-lg z-60 py-5 text-center rounded-b-xl">
-            {sphereSelected.name.split("_").join(" ")}
+      {settings.enablePartsHighlight &&
+        sphereSelected &&
+        sphereSelected.name.split("_")[0] != "Frame" && (
+          <div className="absolute w-[100vw] h-[100vh] z-50">
+            <div
+              className="w-full h-full bg-slate-400 bg-opacity-50 absolute"
+              onMouseDown={() => {
+                setSphereSelected(false);
+              }}
+            ></div>
+            <div className="relative mx-auto font-extrabold text-3xl text-white bg-indigo-500 rounded-lg z-60 py-5 text-center rounded-b-xl">
+              {sphereSelected.name.split("_").join(" ")}
+            </div>
+            <video
+              className="relative m-auto w-[720px] h-[480px] z-[60]"
+              controls
+              width="720"
+              height="480"
+            >
+              <source src="./Leg Press Demo.mp4" type="video/mp4" />
+            </video>
           </div>
-          <video
-            className="relative m-auto w-[720px] h-[480px] z-[60]"
-            controls
-            width="720"
-            height="480"
-          >
-            <source src="./Leg Press Demo.mp4" type="video/mp4" />
-          </video>
-        </div>
-      )}
+        )}
       {groupHovered && settings.detailedView && (
         <div className="absolute bottom-2 right-2 z-50">
           <div className="relative text-lg font-bold z-50">
